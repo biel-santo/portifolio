@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { THEMES, pickTheme, applyTheme, loadFonts, type Theme } from "./themes";
-// import './App.css'
-//import G from "./components/Styles";
+
 import Cursor from "./components/Cursor";
 import Noise from "./components/Noise";
 import Nav from "./components/Nav";
@@ -10,7 +9,7 @@ import Projects from "./components/Projects";
 import About from "./components/About";
 import Blog from "./components/Blog";
 import Contact from "./components/Contact";
-//import Footer from "./components/Cursor";
+
 
 export type Section = "code" | "art";
 

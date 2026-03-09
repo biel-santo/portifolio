@@ -1,4 +1,4 @@
-import DATA from "./data";
+import DATA from "./Data";
 
 function Blog() {
     return (
