@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
 
 function Cursor() {
-    const dotRef = useRef(null);
-    const ringRef = useRef(null);
+    const dotRef = useRef<HTMLDivElement>(null);
+    const ringRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const move = (e) => {
+        const move = (e: MouseEvent) => {
             if (dotRef.current) {
                 dotRef.current.style.left = e.clientX + "px";
                 dotRef.current.style.top = e.clientY + "px";
@@ -15,6 +15,7 @@ function Cursor() {
                 ringRef.current.style.top = e.clientY + "px";
             }
         };
+
         window.addEventListener("mousemove", move);
         return () => window.removeEventListener("mousemove", move);
     }, []);
@@ -27,4 +28,4 @@ function Cursor() {
     );
 }
 
-export default Cursor
+export default Cursor;

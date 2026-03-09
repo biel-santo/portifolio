@@ -2,13 +2,25 @@ import { useState, useEffect } from "react";
 import Toggle from "./Toggle";
 import DATA from "./Data";
 
+type Section = "code" | "art";
+
+interface ProjectItem {
+  id: string | number;
+  title: string;
+  desc: string;
+  year: string | number;
+  type: string;
+  tech: string[];
+  url?: string;
+}
+
 type ProjectsProps = {
-  activeSection: string;
-  setActiveSection: (s: any) => void;
+  activeSection: Section;
+  setActiveSection: (s: Section) => void;
   projectsLayout: "grid" | "list" | "indexed";
 };
 
-function ProjectCardGrid({ project }) {
+function ProjectCardGrid({ project }: { project: ProjectItem }) {
   const Card = project.url ? "a" : "div";
   return (
     <Card
@@ -38,7 +50,7 @@ function ProjectCardGrid({ project }) {
   );
 }
 
-function ProjectCardList({ project }) {
+function ProjectCardList({ project }: { project: ProjectItem }) {
   const Card = project.url ? "a" : "div";
   return (
     <Card
@@ -72,7 +84,7 @@ function ProjectCardList({ project }) {
   );
 }
 
-function ProjectCardIndexed({ project, index }) {
+function ProjectCardIndexed({ project, index }: { project: ProjectItem; index: number }) {
   const Card = project.url ? "a" : "div";
   return (
     <Card
@@ -109,17 +121,18 @@ function ProjectCardIndexed({ project, index }) {
 
 export default function Projects({ activeSection, setActiveSection, projectsLayout }: ProjectsProps) {
   const [switching, setSwitching] = useState(false);
-  const [displayed, setDisplayed] = useState(activeSection);
+  const [displayed, setDisplayed] = useState<Section>(activeSection);
 
   useEffect(() => {
     if (activeSection !== displayed) {
       setSwitching(true);
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setDisplayed(activeSection);
         setSwitching(false);
       }, 300);
+      return () => clearTimeout(timer);
     }
-  }, [activeSection]);
+  }, [activeSection, displayed]);
 
   const projects = displayed === "code" ? DATA.codeProjects : DATA.artProjects;
   const title = displayed === "code" ? "Selected Work" : "Creative Work";
@@ -132,7 +145,7 @@ export default function Projects({ activeSection, setActiveSection, projectsLayo
         <span className="section-count">0{projects.length} projects</span>
       </div>
       <div className={`projects-container projects-container--${projectsLayout} ${switching ? "switching" : ""}`}>
-        {projects.map((p, i) => {
+        {projects.map((p: ProjectItem, i: number) => {
           if (projectsLayout === "list") return <ProjectCardList key={p.id} project={p} />;
           if (projectsLayout === "indexed") return <ProjectCardIndexed key={p.id} project={p} index={i} />;
           return <ProjectCardGrid key={p.id} project={p} />;

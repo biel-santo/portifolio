@@ -1,4 +1,11 @@
-function Toggle({ activeSection, setActiveSection }) {
+type Section = "code" | "art";
+
+interface ToggleProps {
+  activeSection: Section;
+  setActiveSection: (section: Section) => void; // Mudamos de string para Section
+}
+
+function Toggle({ activeSection, setActiveSection }: ToggleProps) {
     return (
         <div className="toggle-section" id="work">
             <span className={`toggle-label ${activeSection === "code" ? "active" : "inactive"}`}>
@@ -6,6 +13,7 @@ function Toggle({ activeSection, setActiveSection }) {
             </span>
             <div
                 className="toggle-track"
+                // O TypeScript agora entenderá que esse toggle só alterna entre os valores válidos
                 onClick={() => setActiveSection(activeSection === "code" ? "art" : "code")}
                 role="switch"
                 aria-checked={activeSection === "art"}
@@ -19,4 +27,4 @@ function Toggle({ activeSection, setActiveSection }) {
     );
 }
 
-export default Toggle
+export default Toggle;

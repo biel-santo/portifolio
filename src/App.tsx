@@ -10,8 +10,7 @@ import About from "./components/About";
 import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 
-
-export type Section = "code" | "art";
+type Section = "code" | "art";
 
 function App() {
   const [activeSection, setActiveSection] = useState<Section>("code");
