@@ -6,6 +6,7 @@ const DATA = {
     bio: "Crafting scalable web applications with a sharp eye for UX/UI. Bridging code and creativity — from React ecosystems to 3D art and game development.",
     stack: ["ReactJS", "TypeScript", "Node.js", "Python", "Figma", "Blender", "UE5"],
     email: "gabrielrntsanto@gmail.com",
+    github: "https://github.com/biel-santo",
     linkedin: "https://www.linkedin.com/in/gabrielrsanto/",
     codeProjects: [
         {
@@ -30,10 +31,18 @@ const DATA = {
             id: 3,
             title: "Autome.md",
             type: "Developer Tool",
-            year: "2025",
+            year: "2026",
             tech: ["Next.js", "TypeScript", "Tailwind CSS"],
             desc: "README generator with templates, badge builder, and live dark mode preview. Built for devs who want professional docs fast.",
             url: "https://autome-md-nextjs.vercel.app/",
+          },
+          {
+            id: 4,
+            title: "Network Infrastructure",
+            type: "Systems & Security",
+            year: "2024",
+            tech: ["IP Networks", "CFTV", "Linux"],
+            desc: "IP device mapping, addressing and configuration for critical monitoring systems.",
           },
     ],
     artProjects: [
@@ -73,24 +82,24 @@ const DATA = {
     blog: [
         {
             id: 1,
+            title: "Security-first mindset in full stack",
+            date: "Mar 2026",
+            tag: "Security",
+            desc: "Lessons from an MBA in Cybersecurity applied to everyday web development.",
+        },
+        {
+            id: 2,
             title: "On building things that last",
             date: "Feb 2025",
             tag: "Engineering",
             desc: "Thoughts on scalable architecture, technical debt, and writing code for the next developer.",
         },
         {
-            id: 2,
+            id: 3,
             title: "When code meets canvas",
-            date: "Jan 2025",
+            date: "Jan 2024",
             tag: "Creative",
             desc: "How my background in 3D art and game dev shapes the way I think about frontend.",
-        },
-        {
-            id: 3,
-            title: "Security-first mindset in full stack",
-            date: "Dec 2024",
-            tag: "Security",
-            desc: "Lessons from an MBA in Cybersecurity applied to everyday web development.",
         },
     ],
 };
